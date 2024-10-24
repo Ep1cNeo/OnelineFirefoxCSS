@@ -1,0 +1,105 @@
+/* 🎨 CSS Overrides - Enhance your Firefox UI! */
+
+/* Center the label in tabs */
+@import url("centered_tab_label.css");
+
+/* Make findbar float on top of web content */
+@import url("floating_findbar_on_top.css");
+
+/* Replace some content context menu items with icons */
+@import url("iconized_content_context_menu.css");
+
+/* Replace some main menu items with icons */
+@import url("iconized_main_menu.css");
+
+/* Replace default loading indicator with a bouncing line */
+@import url("loading_indicator_bouncing_line.css");
+
+/* Merge tabs and navbar to one line */
+@import url("navbar_tabs_oneliner.css");
+
+/* Show toolbars as overlay when in fullscreen mode */
+@import url("overlay_fullscreen_toolbars.css");
+
+/* Make tabs fill available width in tabbar */
+@import url("tabs_fill_available_width.css");
+
+/* Center urlbar text */
+@import url("urlbar_centered_text.css");
+
+/* 🚀 Personal Overrides - Customize your Firefox experience! */
+
+/* Set the toolbar background color */
+:root {
+    --toolbar-bgcolor: black !important;
+}
+
+/* Hide various UI elements */
+#alltabs-button,
+#identity-box,
+#private-browsing-indicator-with-label>label,
+#urlbar .search-one-offs,
+.titlebar-spacer {
+    display: none !important;
+}
+
+/* Custom styling for the navigator toolbox */
+#navigator-toolbox {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23) !important;
+    --uc-navigationbar-width: 53vw;
+    --uc-toolbar-height: 40px;
+    --uc-urlbar-min-width: calc(var(--uc-navigationbar-width) - 105px);
+    /* minimum width for opened urlbar */
+}
+
+/* Apply a blur effect when a modal dialog is open */
+browser[primary="true"][tabDialogShowing="true"],
+#main-window[window-modal-open="true"]>body>#browser {
+    filter: blur(10px)
+}
+
+/* Center text in the URL bar when not open */
+#urlbar:not([open]) #urlbar-input,
+/* ID for Firefox 70 */
+#urlbar:not([open]) .urlbar-input {
+    text-align: center !important;
+}
+
+/* Adjust padding for the URL bar input box */
+.urlbar-input-box {
+    padding-left: 10px !important;
+}
+
+/* Adjust margins for the URL bar view */
+.urlbarView {
+    margin-inline: calc(var(--urlbar-container-padding)) !important;
+}
+
+/* Remove borders from the navigator toolbox and navigation bar */
+#navigator-toolbox,
+#nav-bar {
+    border: none !important;
+}
+
+/* Remove the gap after pinned tabs */
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])>#tabbrowser-arrowscrollbox>.tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
+    margin-inline-start: 0 !important;
+}
+
+/* Toggle opacity of elements on hover */
+#page-action-buttons,
+.tabbrowser-tab .tab-close-button {
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+}
+
+/* Show page action buttons and tab close buttons on hover */
+#nav-bar:hover #page-action-buttons,
+.tabbrowser-tab:not([pinned]):hover .tab-close-button {
+    opacity: 1 !important;
+}
+
+/* Adjust opacity of tab labels */
+.tab-label {
+    opacity: 0.8;
+}
