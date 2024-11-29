@@ -21,3 +21,5 @@ Feel free to review and customize the `userChrome.css` file as required
 
 ![Preview](./Preview2.png)
 ![Preview](./Preview1.png)
+
+Full setup includes CSS files, [Bonjourr](https://bonjourr.fr/) as homepage and [Matt Black](https://addons.mozilla.org/en-US/firefox/addon/matte-black-browser-theme/) theme.
