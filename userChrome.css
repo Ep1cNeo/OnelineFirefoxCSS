@@ -37,8 +37,8 @@
 /* Hide various UI elements */
 #alltabs-button,
 #identity-box,
-#private-browsing-indicator-with-label>label,
 #urlbar .search-one-offs,
+.private-browsing-indicator-label,
 .titlebar-spacer {
     display: none !important;
 }
