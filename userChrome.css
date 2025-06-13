@@ -1,5 +1,8 @@
 /* 🎨 CSS Overrides - Enhance your Firefox UI! */
 
+/* Center the text in the URL bar */
+@import url("urlbar_centered_text.css");
+
 /* Center the label in tabs */
 @import url("centered_tab_label.css");
 
@@ -24,21 +27,27 @@
 /* Make tabs fill available width in tabbar */
 @import url("tabs_fill_available_width.css");
 
-/* Center urlbar text */
-@import url("urlbar_centered_text.css");
+/* Show audio icons as overlay on tabs */
+@import url("overlay_tab_audio_icons.css");
+
+/* Add scale effect when clicking buttons */
+@import url("button_effect_scale_onclick.css");
 
 /* 🚀 Personal Overrides - Customize your Firefox experience! */
 
 /* Set the toolbar background color */
 :root {
     --toolbar-bgcolor: black !important;
+    --toolbarbutton-hover-background: unset !important;
 }
 
 /* Hide various UI elements */
-#alltabs-button,
-#identity-box,
-#urlbar .search-one-offs,
+/* #alltabs-button, */
+/* #identity-icon-box, */
+/* #urlbar .search-one-offs, */
+/* .titlebar-buttonbox-container, */
 .private-browsing-indicator-label,
+#identity-icon-label,
 .titlebar-spacer {
     display: none !important;
 }
@@ -46,7 +55,7 @@
 /* Custom styling for the navigator toolbox */
 #navigator-toolbox {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23) !important;
-    --uc-navigationbar-width: 53vw;
+    --uc-navigationbar-width: 50vw;
     --uc-toolbar-height: 40px;
     --uc-urlbar-min-width: calc(var(--uc-navigationbar-width) - 105px);
     /* minimum width for opened urlbar */
@@ -58,21 +67,66 @@ browser[primary="true"][tabDialogShowing="true"],
     filter: blur(10px)
 }
 
-/* Center text in the URL bar when not open */
-#urlbar:not([open]) #urlbar-input,
-/* ID for Firefox 70 */
-#urlbar:not([open]) .urlbar-input {
-    text-align: center !important;
+/* Page Dimming Effect */
+.browserContainer {
+    filter: none;
+    transform: scale(1);
+    transition: filter 0.2s ease, transform 0.1s cubic-bezier(0, 1, .5, 1);
 }
 
-/* Adjust padding for the URL bar input box */
-.urlbar-input-box {
-    padding-left: 10px !important;
+:has(#urlbar[open]) .browserContainer {
+    filter: blur(10px) brightness(0.7);
+    transform: scale(1.05);
+    transition: filter 2.0s ease, transform 1.0s cubic-bezier(0, 1, .5, 1);
 }
 
-/* Adjust margins for the URL bar view */
-.urlbarView {
-    margin-inline: calc(var(--urlbar-container-padding)) !important;
+/* URL Bar - Default State */
+#urlbar:not([open]) {
+
+    & .urlbar-input-box {
+        opacity: 0.5 !important;
+        padding-left: 0.25vw !important;
+        /* transition: opacity 3s 1s; */
+        transition: opacity 3s;
+    }
+
+    & .urlbar-page-action {
+        min-width: 20px !important;
+    }
+
+    & #identity-box,
+    & #tracking-protection-icon-container,
+    & #page-action-buttons {
+        margin-inline-end: 0 !important;
+        opacity: 0;
+        padding-inline: 0 !important;
+        /* transition: opacity 3s 1s; */
+        transition: opacity 3s;
+    }
+}
+
+/* URL Bar - Active/Hover State */
+#urlbar-container:hover,
+#urlbar:is([open]) {
+    & .urlbar-input-box {
+        opacity: 1 !important;
+        padding-left: 0.25vw !important;
+        transition: opacity 0.1s;
+    }
+
+    & #identity-box,
+    & #tracking-protection-icon-container,
+    & #page-action-buttons {
+        margin-inline-end: 0 !important;
+        opacity: 1;
+        padding-inline: 0 !important;
+        transition: opacity 0.1s;
+    }
+}
+
+#urlbar-background {
+    backdrop-filter: blur(10px) !important;
+    opacity: 0.7 !important;
 }
 
 /* Remove borders from the navigator toolbox and navigation bar */
@@ -83,18 +137,15 @@ browser[primary="true"][tabDialogShowing="true"],
 
 /* Remove the gap after pinned tabs */
 #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])>#tabbrowser-arrowscrollbox>.tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
-    margin-inline-start: 0 !important;
+    margin-inline-start: unset !important;
 }
 
 /* Toggle opacity of elements on hover */
-#page-action-buttons,
 .tabbrowser-tab .tab-close-button {
     opacity: 0;
-    transition: opacity 0.1s ease-in-out;
+    transition: opacity 0.1s;
 }
 
-/* Show page action buttons and tab close buttons on hover */
-#nav-bar:hover #page-action-buttons,
 .tabbrowser-tab:not([pinned]):hover .tab-close-button {
     opacity: 1 !important;
 }
@@ -102,4 +153,9 @@ browser[primary="true"][tabDialogShowing="true"],
 /* Adjust opacity of tab labels */
 .tab-label {
     opacity: 0.8;
+}
+
+/* Hide the titlebar button box container */
+.titlebar-buttonbox-container {
+    display: none !important;
 }
