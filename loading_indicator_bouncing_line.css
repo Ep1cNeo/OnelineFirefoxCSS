@@ -15,7 +15,7 @@ See the above repository for updates as well as full license text. */
   pointer-events: none;
   background-size: 20%;
   background-repeat: no-repeat;
-  background-image: linear-gradient(to left,transparent,rgb(0, 19, 222),transparent);
+  background-image: linear-gradient(to left,transparent,rgb(170,0,70),transparent);
   animation: statusline-anim 400ms alternate infinite ease-in-out;
 }
 
