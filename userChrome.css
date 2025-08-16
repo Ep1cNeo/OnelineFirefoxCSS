@@ -48,8 +48,23 @@
 /* .titlebar-buttonbox-container, */
 .private-browsing-indicator-label,
 #identity-icon-label,
+#userContext-label,
 .titlebar-spacer {
     display: none !important;
+}    
+
+/* Compress various UI elements */
+/* .toolbaritem-combined-buttons, */
+#urlbar-container,
+#userContext-icons,
+#userContext-indicator,
+.toolbarbutton-1 {
+    margin-inline: unset !important;
+    padding-inline: unset !important;
+}
+
+#urlbar-zoom-button {
+    margin-inline: unset !important;
 }
 
 /* Hide various urlbar box backgrounds */
@@ -57,12 +72,12 @@
 #tracking-protection-icon-container,
 .urlbar-page-action {
     background-color: transparent !important;
-}
+}    
 
 /* Reduce opacity of the container icons */
 .urlbar-addon-page-action {
     opacity: 0.6 !important;
-}
+}    
 
 /* Custom styling for the navigator toolbox */
 #navigator-toolbox {
@@ -71,26 +86,26 @@
     --uc-toolbar-height: 40px;
     --uc-urlbar-min-width: calc(var(--uc-navigationbar-width) - 105px);
     /* minimum width for opened urlbar */
-}
+}    
 
 /* Apply a blur effect when a modal dialog is open */
 browser[primary="true"][tabDialogShowing="true"],
 #main-window[window-modal-open="true"]>body>#browser {
     filter: blur(10px)
-}
+}    
 
 /* Page Dimming Effect */
 .browserContainer {
     filter: none;
     transform: scale(1);
     transition: filter 0.2s ease, transform 0.1s cubic-bezier(0, 1, .5, 1);
-}
+}    
 
 :has(#urlbar[open]) .browserContainer {
     filter: blur(10px) brightness(0.7);
     transform: scale(1.05);
     transition: filter 2.0s ease, transform 1.0s cubic-bezier(0, 1, .5, 1);
-}
+}    
 
 /* URL Bar - Default State */
 #urlbar:not([open], [focused]) {
