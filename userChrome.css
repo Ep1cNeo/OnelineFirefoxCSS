@@ -44,12 +44,14 @@
 /* Hide various UI elements */
 /* #alltabs-button, */
 /* #identity-icon-box, */
-/* #urlbar .search-one-offs, */
 /* .titlebar-buttonbox-container, */
-.private-browsing-indicator-label,
 #identity-icon-label,
+/* #urlbar .search-one-offs:not([hidden]), */
 #userContext-label,
-.titlebar-spacer {
+#pinned-drop-indicator,
+.private-browsing-indicator-label,
+.titlebar-spacer,
+.titlebar-buttonbox-container {
     display: none !important;
 }    
 
@@ -211,9 +213,4 @@ browser[primary="true"][tabDialogShowing="true"],
 /* Adjust opacity of tab labels */
 .tab-label {
     opacity: 0.8;
-}
-
-/* Hide the titlebar button box container */
-.titlebar-buttonbox-container {
-    display: none !important;
 }

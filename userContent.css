@@ -35,8 +35,15 @@
         margin-left: calc(var(--ytd-rich-grid-item-margin)/2) !important;
     }
 
-    /* Hide the section renderer separator in the YouTube grid layout */
-    ytd-rich-section-renderer.style-scope.ytd-rich-grid-renderer {
+    /* Hide section separator rows in the rich grid */
+    ytd-rich-section-renderer {
         display: none !important;
+    }
+
+    /* Hide “Members only” items and any shelf that contains them */
+    @supports selector(:has(*)) {
+        :is(ytd-rich-item-renderer, ytd-rich-shelf-renderer):has(.badge-style-type-members-only) {
+            display: none !important;
+        }
     }
 }
