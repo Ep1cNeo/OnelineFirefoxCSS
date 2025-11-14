@@ -19,7 +19,7 @@
 @import url("loading_indicator_bouncing_line.css");
 
 /* Merge tabs and navbar to one line */
-@import url("navbar_tabs_oneliner.css");
+@import url("oneline_toolbar.css");
 
 /* Show toolbars as overlay when in fullscreen mode */
 @import url("overlay_fullscreen_toolbars.css");
@@ -39,21 +39,22 @@
 :root {
     --toolbar-bgcolor: black !important;
     --toolbarbutton-hover-background: unset !important;
+    --uc-oneline-toolbar-split: 5fr 5fr;
 }
 
 /* Hide various UI elements */
 /* #alltabs-button, */
 /* #identity-icon-box, */
-/* .titlebar-buttonbox-container, */
-#identity-icon-label,
 /* #urlbar .search-one-offs:not([hidden]), */
+#identity-icon-label,
 #userContext-label,
 #pinned-drop-indicator,
 .private-browsing-indicator-label,
 .titlebar-spacer,
-.titlebar-buttonbox-container {
+.titlebar-button {
     display: none !important;
-}    
+    width: 0 !important;
+}
 
 /* Compress various UI elements */
 /* .toolbaritem-combined-buttons, */
@@ -74,12 +75,12 @@
 #tracking-protection-icon-container,
 .urlbar-page-action {
     background-color: transparent !important;
-}    
+}
 
 /* Reduce opacity of the container icons */
 .urlbar-addon-page-action {
     opacity: 0.6 !important;
-}    
+}
 
 /* Custom styling for the navigator toolbox */
 #navigator-toolbox {
@@ -88,26 +89,26 @@
     --uc-toolbar-height: 40px;
     --uc-urlbar-min-width: calc(var(--uc-navigationbar-width) - 105px);
     /* minimum width for opened urlbar */
-}    
+}
 
 /* Apply a blur effect when a modal dialog is open */
 browser[primary="true"][tabDialogShowing="true"],
 #main-window[window-modal-open="true"]>body>#browser {
     filter: blur(10px)
-}    
+}
 
 /* Page Dimming Effect */
 .browserContainer {
     filter: none;
     transform: scale(1);
     transition: filter 0.2s ease, transform 0.1s cubic-bezier(0, 1, .5, 1);
-}    
+}
 
 :has(#urlbar[open]) .browserContainer {
     filter: blur(10px) brightness(0.7);
     transform: scale(1.05);
     transition: filter 2.0s ease, transform 1.0s cubic-bezier(0, 1, .5, 1);
-}    
+}
 
 /* URL Bar - Default State */
 #urlbar:not([open], [focused]) {
